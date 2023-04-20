@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Stop Destruction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<h1>Stop Destruction</h1>
@@ -11,38 +12,38 @@
 	<input type="text" id="inputBox">
 	<button onclick="stopCountdown()">Stop Destruction</button>
 	<p id="message"></p>
+<script>
+	var count = parseInt(localStorage.getItem('count') || 3819823);
+	var timer;
 
-	<script>
-		var count = parseInt(localStorage.getItem('count') || 3819823);
-		var timer;
-
-		function startCountdown() {
-			timer = setInterval(function() {
-				count--;
-				document.getElementById("countdown").innerHTML = count;
-				localStorage.setItem('count', count);
-				if (count == 0) {
-					clearInterval(timer);
-					document.getElementById("message").innerHTML = "Destruction Fleet Incoming.";
-					localStorage.removeItem('count');
-				}
-			}, 1);
-		}
-
-		function stopCountdown() {
-			var input = document.getElementById("inputBox").value.toLowerCase();
-			if (input == "grentilyvi") {
+	function startCountdown() {
+		timer = setInterval(function() {
+			count--;
+			document.getElementById("countdown").innerHTML = count;
+			localStorage.setItem('count', count);
+			if (count == 0) {
 				clearInterval(timer);
-				document.getElementById("message").innerHTML = "Enjoy your gift basket!";
+				document.getElementById("message").innerHTML = "Destruction Fleet Incoming.";
 				localStorage.removeItem('count');
-			} else {
-				document.getElementById("message").innerHTML = "Sorry, that's not the correct word.";
 			}
+		}, 1);
+	}
+
+	function stopCountdown() {
+		var input = document.getElementById("inputBox").value.trim().toLowerCase();
+		if (input == "grentilyvi") {
+			clearInterval(timer);
+			document.getElementById("message").innerHTML = "Enjoy your gift basket!";
+			localStorage.removeItem('count');
+		} else {
+			document.getElementById("message").innerHTML = "Sorry, that's not the correct word.";
 		}
+	}
 
-		window.onload = startCountdown;
-	</script>
+	window.onload = startCountdown;
+</script>
 
-	<p>Time remaining: <span id="countdown">10</span> fregs </p>
+<p>Time remaining: <span id="countdown">10</span> fregs </p>
+
 </body>
 </html>
