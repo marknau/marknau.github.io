@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Stop Destruction</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Stop Destruction</h1>
-    <p>Quick! We need to stop the destruction of our planet before it's too late. The countdown clock is ticking down rapidly:</p>
-    <p id="countdown"></p>
-    <button id="stopButton">Stop Destruction</button>
-    
-    <script>
-      var countdownElement = document.getElementById("countdown");
-      var countdownValue = 85421;
-      var countdownInterval = setInterval(function() {
-        countdownValue--;
-        countdownElement.innerHTML = countdownValue;
-      }, 1);
-      
-      var stopButton = document.getElementById("stopButton");
-      stopButton.addEventListener("click", function() {
-        clearInterval(countdownInterval);
-        countdownElement.innerHTML = "Enjoy your gift basket!";
-      });
-    </script>
-  </body>
+<head>
+	<title>Stop Destruction</title>
+	<style>
+		#countdown {
+			font-size: 72px;
+			margin-bottom: 10px;
+		}
+
+		input[type="text"] {
+			font-size: 24px;
+			margin-right: 10px;
+		}
+
+		button {
+			font-size: 24px;
+		}
+	</style>
+	<script>
+		var count = 10;
+		var countdown = setInterval(function(){
+			count--;
+			document.getElementById("countdown").innerHTML = count;
+			if (count === 0) {
+				clearInterval(countdown);
+				document.getElementById("countdown").innerHTML = "Countdown stopped";
+			}
+		}, 1000);
+
+		function stopCountdown() {
+			var input = document.getElementById("inputBox").value;
+			if (input === "grentilyvi") {
+				clearInterval(countdown);
+				document.getElementById("message").innerHTML = "Enjoy your gift basket";
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="countdown">10</div>
+	<input type="text" id="inputBox">
+	<button onclick="stopCountdown()">Stop Destruction</button>
+	<div id="message"></div>
+</body>
 </html>
