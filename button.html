@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Enter Password in lower-case to Stop Destruction</title>
-	<style>
-		#countdown {
-			font-size: 72px;
-			margin-bottom: 10px;
-		}
-
-		input[type="text"] {
-			font-size: 24px;
-			margin-right: 10px;
-		}
-
-		button {
-			font-size: 24px;
-		}
-	</style>
-	<script>
-		var count = 831317;
-		var countdown = setInterval(function(){
-			count--;
-			document.getElementById("countdown").innerHTML = count;
-			if (count === 0) {
-				clearInterval(countdown);
-				document.getElementById("countdown").innerHTML = "Destruction Fleet Incoming";
-			}
-		}, 1);
-
-		function stopCountdown() {
-			var input = document.getElementById("inputBox").value;
-			if (input === "grentilyvi") {
-				clearInterval(countdown);
-				document.getElementById("message").innerHTML = "Enjoy your gift basket";
-			}
-		}
-	</script>
+	<title>Stop Destruction</title>
 </head>
 <body>
-	<div id="countdown">10</div>
+	<h1>Stop Destruction</h1>
+	<p>Enter the secret word to stop the countdown:</p>
 	<input type="text" id="inputBox">
 	<button onclick="stopCountdown()">Stop Destruction</button>
-	<div id="message"></div>
+	<p id="message"></p>
+
+	<script>
+		var count = parseInt(localStorage.getItem('count') || 81923);
+		var timer;
+
+		function startCountdown() {
+			timer = setInterval(function() {
+				count--;
+				document.getElementById("countdown").innerHTML = count;
+				localStorage.setItem('count', count);
+				if (count == 0) {
+					clearInterval(timer);
+					document.getElementById("message").innerHTML = "Destruction Fleet Incoming.";
+					localStorage.removeItem('count');
+				}
+			}, 1);
+		}
+
+		function stopCountdown() {
+			var input = document.getElementById("inputBox").value.toLowerCase();
+			if (input == "grentilyvi") {
+				clearInterval(timer);
+				document.getElementById("message").innerHTML = "Enjoy your gift basket!";
+				localStorage.removeItem('count');
+			} else {
+				document.getElementById("message").innerHTML = "Sorry, that's not the correct word.";
+			}
+		}
+
+		window.onload = startCountdown;
+	</script>
+
+	<p>Time remaining: <span id="countdown">10</span></p>
 </body>
 </html>
