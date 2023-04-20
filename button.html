@@ -13,7 +13,7 @@
     
     <script>
       var countdownElement = document.getElementById("countdown");
-      var countdownValue = 1000000;
+      var countdownValue = 85421;
       var countdownInterval = setInterval(function() {
         countdownValue--;
         countdownElement.innerHTML = countdownValue;
@@ -22,7 +22,7 @@
       var stopButton = document.getElementById("stopButton");
       stopButton.addEventListener("click", function() {
         clearInterval(countdownInterval);
-        countdownElement.innerHTML = "Enjoy your gift basket";
+        countdownElement.innerHTML = "Enjoy your gift basket!";
       });
     </script>
   </body>
