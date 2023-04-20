@@ -31,7 +31,7 @@
 
 	function stopCountdown() {
 		var input = document.getElementById("inputBox").value.trim().toLowerCase();
-		if (input == "grentilyvi") {
+		if (input == "grentilyvi" || input == "grentily vi") {
 			clearInterval(timer);
 			document.getElementById("message").innerHTML = "Enjoy your gift basket!";
 			localStorage.removeItem('count');
