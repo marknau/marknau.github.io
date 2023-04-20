@@ -18,15 +18,15 @@
 		}
 	</style>
 	<script>
-		var count = 10;
+		var count = 53317;
 		var countdown = setInterval(function(){
 			count--;
 			document.getElementById("countdown").innerHTML = count;
 			if (count === 0) {
 				clearInterval(countdown);
-				document.getElementById("countdown").innerHTML = "Countdown stopped";
+				document.getElementById("countdown").innerHTML = "Destruction Fleet Incoming";
 			}
-		}, 1000);
+		}, 1);
 
 		function stopCountdown() {
 			var input = document.getElementById("inputBox").value;
