@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Stop Destruction</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Stop Destruction</h1>
+    <p>Quick! We need to stop the destruction of our planet before it's too late. The countdown clock is ticking down rapidly:</p>
+    <p id="countdown"></p>
+    <button id="stopButton">Stop Destruction</button>
+    
+    <script>
+      var countdownElement = document.getElementById("countdown");
+      var countdownValue = 1000000;
+      var countdownInterval = setInterval(function() {
+        countdownValue--;
+        countdownElement.innerHTML = countdownValue;
+      }, 1);
+      
+      var stopButton = document.getElementById("stopButton");
+      stopButton.addEventListener("click", function() {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = "Enjoy your gift basket";
+      });
+    </script>
+  </body>
+</html>
